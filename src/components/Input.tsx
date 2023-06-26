@@ -1,24 +1,43 @@
-import { useState, ChangeEvent } from 'react'
-import { QRCodeSVG } from "qrcode.react"
-
-
+import { useState, ChangeEvent } from "react";
+import { QRCodeSVG } from "qrcode.react";
+import { Stack, TextField, Paper } from "@mui/material";
+import Grid from "@mui//material/Unstable_Grid2";
 
 const Input = () => {
-  const [text, setText] = useState('')
+  const [text, setText] = useState("");
 
-  const handleText = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e)
-    setText(e.target.value)
-  }
-
+  const handleText = (event: ChangeEvent<HTMLInputElement>) => {
+    setText(event.target.value);
+  };
   return (
-    <div className="bg-gray-100 w-screen h-screen p-2 flex justify-center items-center">
-      <div className='flex flex-col justify-evenly items-center h-full bg-[#213555] rounded-3xl drop-shadow-2xl shadow-md shadow-slate-500 px-4 md:h-3/4 md:w-1/3 space-y-10'>
-        <input value={text} type="text" placeholder="Type URL" onChange={handleText} className='h-10 rounded-lg w-full bg-[#4F709C] pl-1 text-white text-lg font-semibold md:w-1/2' />
-        <QRCodeSVG value={text} size={300} bgColor='#213555' fgColor='#ffffff' />
-      </div>
-    </div>
-  )
-}
+    <Grid
+      container
+      className="h-screen w-screen bg-[#373B59] px-2"
+      justifyContent={"center"}
+      alignItems={"center"}
+    >
+      <Paper elevation={24}>
+        <Stack className="flex flex-col lg:flex-row">
+          <Grid
+            xl={6}
+            className="flex items-center justify-center p-10 lg:px-10 lg:py-0"
+          >
+            <TextField
+              variant="standard"
+              placeholder="Type your URL here"
+              onChange={handleText}
+              helperText="Your QR code will be generated automatically as you type."
+            />
+          </Grid>
+          <Grid xl={6} className="flex justify-center bg-[#8A94DF]">
+            <div className="my-6 lg:m-10 ">
+              <QRCodeSVG value={text} size={300} bgColor="#8A94DF" />
+            </div>
+          </Grid>
+        </Stack>
+      </Paper>
+    </Grid>
+  );
+};
 
-export default Input
+export default Input;
