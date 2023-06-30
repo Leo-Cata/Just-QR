@@ -1,9 +1,7 @@
-import Input from './components/Input'
+import InputContainer from "./containers/InputContainer";
 
 const App = () => {
-  return (
-    <Input />
-  )
-}
+  return <InputContainer />;
+};
 
-export default App
+export default App;
