@@ -1,5 +1,5 @@
 import { useState, ChangeEvent } from "react";
-import { Stack, Paper, Grid } from "@mui/material";
+import { Stack, Paper } from "@mui/material";
 import Input from "../components/Input";
 import QrCode from "../components/QrCode";
 
@@ -10,7 +10,7 @@ const InputContainer = () => {
     setText(event.target.value);
   };
   return (
-    <Paper elevation={24}>
+    <Paper elevation={24} className="mx-2 my-4 lg:my-16">
       <Stack className="flex flex-col lg:flex-row">
         <Input onTextChange={handleText} />
 
